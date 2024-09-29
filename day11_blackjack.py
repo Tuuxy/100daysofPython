@@ -38,7 +38,7 @@ def draw(deck,cards=None,amount=1):
     """Draw x amount of cards"""
     if cards is None:
         cards = []
-    for time in range(amount):
+    for _ in range(amount):
         card = random.choice(deck)
         deck.remove(card)
         cards.append(card)
