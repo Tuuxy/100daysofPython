@@ -3,7 +3,7 @@ import os
 import day11_art
 
 
-values = {
+VALUES = {
     1 : 11,
     2 : 2,
     3 : 3,
@@ -26,10 +26,10 @@ def clear_screen():
     else:
         os.system("clear")
 
-def make_deck(values):
+def make_deck():
     """Creates the deck"""
     deck = []
-    for card in values:
+    for card in VALUES:
         for i in range(4):
             deck.append(card)
     return deck 
@@ -44,9 +44,9 @@ def draw(deck,cards=None,amount=1):
         cards.append(card)
     return cards
 
-def score(values,cards):
+def score(cards):
     """Calculate score of player/computer cards"""
-    total_score = sum(values[card] for card in cards)
+    total_score = sum(VALUES[card] for card in cards)
     aces = cards.count(1)
     while total_score > 21 and aces:
         total_score -= 10
@@ -84,12 +84,12 @@ def who_wins(player,player_score,computer,computer_score):
 
 def main():
 
-    deck = make_deck(values)
+    deck = make_deck()
     player = draw(deck,amount=2)
     computer = draw(deck,amount=2)
 
-    player_score = score(values,player)
-    computer_score = score(values,computer)
+    player_score = score(player)
+    computer_score = score(computer)
 
     print(f"Player cards: {player}, score: {player_score}")
     print(f"Computer's first card: {computer[0]}")
@@ -99,7 +99,7 @@ def main():
         if drawing_more == False:
             break
         player = draw(deck,player,1)
-        player_score = score(values,player)
+        player_score = score(player)
         print(f"Your cards: {player}, current score: {player_score}")
         print(f"Computer's first card: {computer[0]}")
 
@@ -109,10 +109,10 @@ def main():
 
     while computer_score < 16:
         computer = draw(deck,computer,1)
-        computer_score = score(values,computer)
+        computer_score = score(computer)
     
-    player_score = score(values,player)
-    computer_score = score(values,computer)
+    player_score = score(player)
+    computer_score = score(computer)
     who_wins(player,player_score,computer,computer_score)
 
 
