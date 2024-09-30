@@ -16,7 +16,7 @@ def display(a,b,score):
     print(f"Compare B: {b["name"]}, a {b["description"]}, from {b["country"]}.")
 
 def validate_response(prompt,valid):
-
+    """Function to prompt a user and validate input"""
     while True:
         response = input(prompt).lower()
         if response in valid:
@@ -24,6 +24,7 @@ def validate_response(prompt,valid):
         print("Invalid input.")
 
 def get_data(previous_b,score):
+    """Function to retrieve data from the data file"""
     a = previous_b if score != 0 else random.choice(day14_data.data)
     while True :
         b = random.choice(day14_data.data)
@@ -33,6 +34,7 @@ def get_data(previous_b,score):
     return a, b, previous_b
 
 def compare_answer(answer,a,b):
+    """Function to compare player guess to the correct answer"""
     correct = max(a["follower_count"],b["follower_count"])
     player_response = a["follower_count"] if answer == "a" else b["follower_count"]
     
