@@ -15,13 +15,16 @@ def prompt_user():
             print("Turning off the coffee machine...")
             return False
         elif user_choice == "report":
+            print("\n\nHere is your report:\n")
             for key in day15_data.resources:
                 print(f"{key}: {day15_data.resources[key][0]}{day15_data.resources[key][1]}")
+            input("Press enter to continue.")
             return True
         elif user_choice == "refill":
             print("Refilling the machine ...")
             for ingredient in ["water","milk","coffee"]:
                 day15_data.resources[ingredient][0] = 1000
+            time.sleep(3)
             return True
         elif user_choice in day15_data.MENU:
             return user_choice
@@ -86,7 +89,7 @@ def make_coffee(choice):
         name, amount = ingredient
         day15_data.resources[name][0] -= amount
 
-    print(f"Here is your {choice}. Enjoy!")
+    print(f"Here is your {choice} ☕️. Enjoy!")
 
 def main():
     while True:
@@ -102,7 +105,6 @@ def main():
                 time.sleep(5)
                 clear_screen()
         else:
-            input("Here is your report, press enter to continue.")
             clear_screen()
 
 if __name__ == "__main__":
