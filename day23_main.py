@@ -4,6 +4,7 @@ from day23_player import Player
 from day23_car_manager import CarManager
 from day23_scoreboard import Scoreboard
 
+
 if __name__ == "__main__":
     screen = Screen()
     screen.setup(width=600, height=600)
@@ -17,11 +18,11 @@ if __name__ == "__main__":
     screen.listen()
     screen.onkey(player.move, "Up")
 
-    car_density = 6
+    car_density = 20
     loop = 0
     game_is_on = True
     while game_is_on:
-        time.sleep(0.1)
+        time.sleep(1/144)
         screen.update()
         loop += 1
         
@@ -35,8 +36,8 @@ if __name__ == "__main__":
             scoreboard.score_point()
             player.reset_position()
             car.increase_movespeed(scoreboard.score)
-            if car_density > 2:
-                car_density -= 1
+            if car_density > 5:
+                car_density -= 5
 
         for any_car in car.cars:
             if player.distance(any_car) < 20:
