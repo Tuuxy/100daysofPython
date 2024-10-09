@@ -25,7 +25,7 @@ if __name__ == "__main__":
         screen.update()
         loop += 1
         
-        if loop % 6 == 0:
+        if loop % car_density == 0:
             car.add_car()
         
         car.move()
