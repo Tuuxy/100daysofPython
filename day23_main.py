@@ -37,7 +37,6 @@ if __name__ == "__main__":
             car.increase_movespeed(scoreboard.score)
             if car_density > 2:
                 car_density -= 1
-                print(car_density)
 
         for any_car in car.cars:
             if player.distance(any_car) < 20:
